@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mridula ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+background:linear-gradient(135deg,#ff4f9a,#ffd6e8);
+}
+.card{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:30px;
+text-align:center;
+color:white;
+width:90%;
+max-width:360px;
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+h1{font-size:30px}
+h2{margin:12px 0 25px}
+#yes,#no{
+padding:14px 28px;
+border:none;
+border-radius:999px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+#yes{
+background:white;
+color:#ff2f7d;
+transition:.25s;
+}
+#no{
+position:absolute;
+background:#ff2f7d;
+color:white;
+}
+.heart{
+position:absolute;
+font-size:24px;
+animation:float 5s linear infinite;
+pointer-events:none;
+}
+@keyframes float{
+0%{transform:translateY(100vh)}
+100%{transform:translateY(-120px)}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+<h1>Mridula ❤️</h1>
+<h2>Do You Love Me?</h2>
+<button id="yes">YES 💖</button>
+<button id="no">NO 😅</button>
+</div>
+
+<script>
+const no=document.getElementById("no");
+const yes=document.getElementById("yes");
+let count=0;
+
+function moveNo(){
+if(count<15){
+count++;
+const x=Math.random()*(window.innerWidth-120);
+const y=Math.random()*(window.innerHeight-70);
+no.style.left=x+"px";
+no.style.top=y+"px";
+yes.style.transform=`scale(${1+count*0.08})`;
+}else{
+no.innerHTML="🥺";
+}
+}
+no.addEventListener("mouseover",moveNo);
+no.addEventListener("touchstart",(e)=>{
+e.preventDefault();
+moveNo();
+});
+
+yes.onclick=function(){
+document.body.innerHTML=`
+<div style="display:flex;justify-content:center;align-items:center;height:100vh;width:100%;background:linear-gradient(135deg,#ff2f7d,#ffb6d5);text-align:center;color:white;font-family:-apple-system,sans-serif;">
+<div>
+<div style="font-size:90px;">💖</div>
+<h1>I Love You ❤️</h1>
+<h2>Mridula 🌸</h2>
+<p>Forever & Always 💖</p>
+</div>
+</div>`;
+for(let i=0;i<70;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML=Math.random()>0.5?"💖":"💕";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(18+Math.random()*25)+"px";
+h.style.animationDuration=(3+Math.random()*4)+"s";
+document.body.appendChild(h);
+}
+};
+
+moveNo();
+</script>
+
+</body>
+</html>
